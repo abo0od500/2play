@@ -26,6 +26,14 @@ client.on('ready', () => {
   console.log('')
   console.log('')
 });
+
+client.on('ready', () => {
+  // Get the channel via ID
+  let channel = client.channels.get('522355021069811712');
+  channel.join()
+  .then(connection => console.log('Connected'))
+  .catch(console.error);
+});
  
 const ytdl = require("ytdl-core");
 const { Client, Util } = require('discord.js');
