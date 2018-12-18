@@ -27,13 +27,13 @@ client.on('ready', () => {
   console.log('')
 });
 
-client.on('ready', () => {
-  // Get the channel via ID
-  let channel = client.channels.get('522860286617845760');
-  channel.join()
-  .then(connection => console.log('Connected'))
-  .catch(console.error);
-});
+// client.on('ready', () => {
+//   // Get the channel via ID
+//   let channel = client.channels.get('522860286617845760');
+//   channel.join()
+//   .then(connection => console.log('Connected'))
+//   .catch(console.error);
+// });
  
 const ytdl = require("ytdl-core");
 const { Client, Util } = require('discord.js');
@@ -241,7 +241,7 @@ function play(guild, song) {
 }
  
 const adminprefix = "1admin";
-const devs = ['482335925867642881'];
+const devs = ['524237957469700117'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
