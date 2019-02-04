@@ -43,7 +43,8 @@ const YouTube = require('simple-youtube-api');
 const youtube = new YouTube("AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8");
 const queue = new Map();
  
- 
+     
+
  
 var prefix = "2" 
 client.on('message', async msg => {
@@ -57,7 +58,8 @@ client.on('message', async msg => {
    
     const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
     const serverQueue = queue.get(msg.guild.id);
- 
+	
+	//serverQueue.connection.dispatcher.setVolumeLogarithmic(10);
     let command = msg.content.toLowerCase().split(" ")[0];
     command = command.slice(prefix.length)
  
@@ -88,6 +90,7 @@ client.on('message', async msg => {
                 await handleVideo(video2, msg, voiceChannel, true); // eslint-disable-line no-await-in-loop
             }
             return msg.channel.send(` **${playlist.title}** تم الإضآفة إلى قأئمة التشغيل`);
+			
         } else {
             try {
  
@@ -150,7 +153,7 @@ ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
         if (!serverQueue) return msg.channel.send('لا يوجد شيء شغآل.');
         if (!args[1]) return msg.channel.send(`:loud_sound: مستوى الصوت **${serverQueue.volume}**`);
         serverQueue.volume = args[1];
-        serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 50);
+        serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5);
         return msg.channel.send(`:speaker: تم تغير الصوت الي **${args[1]}**`);
     } else if (command === `np`) {
       if (msg.channel.id != process.env.BOTCHAT) return msg.channel.send('حاطين لك شات بوت ليه انت وراسك!!'); 
@@ -253,8 +256,9 @@ function play(guild, song) {
             play(guild, serverQueue.songs[0]);
         })
         .on('error', error => console.error(error));
-    dispatcher.setVolumeLogarithmic(serverQueue.volume / 5);
- 
+    //dispatcher.setVolumeLogarithmic(10);
+	
+	
     serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }
  
