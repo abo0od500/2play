@@ -3,7 +3,7 @@ const client = new Discord.Client();
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity("splay",{type: 'WATCHING'})
+   client.user.setActivity("2play",{type: 'WATCHING'})
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -46,7 +46,7 @@ const queue = new Map();
      
 
  
-var prefix = "s" 
+var prefix = "2" 
 client.on('message', async msg => {
     //--
 
@@ -262,7 +262,7 @@ function play(guild, song) {
     serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }
  
-const adminprefix = "1admin";
+const adminprefix = "2admin";
 const devs = ['524237957469700117'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
